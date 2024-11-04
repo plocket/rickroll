@@ -11,75 +11,10 @@
     }
     div { padding-top: .5em; }
     a { display: block; }
-
   </style>
 </head>
 <body>
-  <script>
-    // Wait for youtube video to load and then play it softly
-    var tag = document.createElement('script');
-    tag.id = 'iframe-demo';
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    function onYouTubeIframeAPIReady() {
-      let player = new YT.Player(`rickroll-vid`, {
-        events: {
-          onReady: onPlayerReady,
-          onError: function(event) {
-              console.error('Youtube player error:', event.data);
-          }
-        }
-      });
-      // Add event listener to play video automatically when page loads
-      window.addEventListener(`load`, function() {
-          player.playVideo();
-      });
-    }
-    function onPlayerReady( event ) {
-      console.log(1);
-      document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
-      console.log(2);
-      event.target.setVolume(30);
-      console.log(3);
-      event.target.playVideo();
-      console.log(4);
-    }
-  </script>
-  <iframe id="rickroll-vid" width="916" height="515" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <iframe
-    id="rickroll-vid" width="916" height="515"
-    wmode="transparent" type="video/mp4"
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1"
-    title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
-    allow="autoplay; encrypted-media; picture-in-picture; web-share;"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen></iframe>
-  <embed
-    id="rickroll-vid" width="916" height="515"
-    wmode="transparent" type="video/mp4"
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1"
-    title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
-    allow="autoplay; encrypted-media; picture-in-picture; web-share;"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  <object id="rickroll-vid"
-    style="width: 820px; height: 461.25px; float: none; clear: both; margin: 2px auto;"
-    data="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1">
-  </object>
-  <!-- <div style="width: 560px; height: 315px; float: none; clear: both; margin: 2px auto;">
-  <embed
-    frameborder="0"
-    src="https://www.youtube.com/embed/J---aiyznGQ?autohide=1&autoplay=1"
-    wmode="transparent"
-    type="video/mp4"
-    width="100%" height="100%"
-    allow="autoplay; encrypted-media; picture-in-picture"
-    allowfullscreen
-    title="Keyboard Cat"
-  > -->
-</div>
+  <img src="rickroll_giphy_LXONhtCmN32YU.webp" alt="GIF of Rick Astley, Never Gonna Give You Up"/>
   <div id="instructions">
     Don't trust links either. Right click and copy the link itself, then paste it somewhere to see the url.
   </div>
