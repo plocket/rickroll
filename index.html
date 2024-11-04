@@ -32,14 +32,19 @@
           }
         }
       });
+      // Add event listener to play video automatically when page loads
+      window.addEventListener(`load`, function() {
+          player.playVideo();
+      });
     }
     function onPlayerReady( event ) {
-      console.log(1)
+      console.log(1);
       document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
-      console.log(2)
+      console.log(2);
       event.target.setVolume(30);
-      console.log(3)
+      console.log(3);
       event.target.playVideo();
+      console.log(4);
     }
   </script>
   <iframe id="rickroll-vid" width="916" height="515" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
