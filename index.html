@@ -11,6 +11,7 @@
     }
     div { padding-top: .5em; }
     a { display: block; }
+
   </style>
 </head>
 <body>
@@ -27,12 +28,12 @@
     // document.querySelector(`#rickroll-vid`).setVolume(30);
     let player;
     function onYouTubeIframeAPIReady() {
-      console.log(`ready`);
       player = new YT.Player(`rickroll-vid`, {
           events: { onReady: onPlayerReady }
       });
     }
     function onPlayerReady( event ) {
+      document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
       event.target.setVolume(30);
       event.target.playVideo();
     }
