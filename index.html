@@ -15,6 +15,30 @@
   </style>
 </head>
 <body>
+  <script>
+    // Wait for youtube video to load and then play it softly
+    var tag = document.createElement('script');
+    tag.id = 'iframe-demo';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      let player = new YT.Player(`rickroll-vid`, {
+        events: {
+          onReady: onPlayerReady,
+          onError: function(event) {
+              console.error('Youtube player error:', event.data);
+          }
+        }
+      });
+    }
+    function onPlayerReady( event ) {
+      document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
+      event.target.setVolume(30);
+      event.target.playVideo();
+    }
+  </script>>
   <iframe id="rickroll-vid" width="916" height="515" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <div id="instructions">
     Don't trust links either. Right click and copy the link itself, then paste it somewhere to see the url.
@@ -25,19 +49,6 @@
     <a href="." id="wrong">Is this the real ALKiln docs link?</a>
   </div>
   <script>
-    // document.querySelector(`#rickroll-vid`).setVolume(30);
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player(`rickroll-vid`, {
-          events: { onReady: onPlayerReady }
-      });
-    }
-    function onPlayerReady( event ) {
-      document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
-      event.target.setVolume(30);
-      event.target.playVideo();
-    }
-
     // Put a random link first so folks really have to check the url.
     // This may be too annoying.
     let links = [
