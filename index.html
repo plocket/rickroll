@@ -34,11 +34,14 @@
       });
     }
     function onPlayerReady( event ) {
+      console.log(1)
       document.getElementById(`rickroll-vid`).style.borderColor = '#FF6D00';
+      console.log(2)
       event.target.setVolume(30);
+      console.log(3)
       event.target.playVideo();
     }
-  </script>>
+  </script>
   <iframe id="rickroll-vid" width="916" height="515" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <div id="instructions">
     Don't trust links either. Right click and copy the link itself, then paste it somewhere to see the url.
