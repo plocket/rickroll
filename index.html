@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" >
+  <title>Don't trust QR codes</title>
+  <style>
+    body {
+      font-size: 1.5em;
+      padding: 1em;
+    }
+    div { padding-top: .5em; }
+    a { display: block; }
+  </style>
+</head>
+<body>
+  <iframe id="rickroll-vid" width="916" height="515" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&enablejsapi=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div id="instructions">
+    Don't trust links either. Right click and copy the link itself, then paste it somewhere to see the url.
+  </div>
+  <div id="link-container">
+    <!-- Default if no js is available -->
+    <a href="https://assemblyline.suffolklitlab.org/docs/alkiln" id="correct">Is this the real ALKiln docs link?</a>
+    <a href="." id="wrong">Is this the real ALKiln docs link?</a>
+  </div>
+  <script>
+    // document.querySelector(`#rickroll-vid`).setVolume(30);
+    let player;
+    function onYouTubeIframeAPIReady() {
+      console.log(`ready`);
+      player = new YT.Player(`rickroll-vid`, {
+          events: { onReady: onPlayerReady }
+      });
+    }
+    function onPlayerReady( event ) {
+      event.target.setVolume(30);
+      event.target.playVideo();
+    }
+
+    // Put a random link first so folks really have to check the url.
+    // This may be too annoying.
+    let links = [
+      `<a href="." id="wrong">Is this the real ALKiln docs link?</a>`,
+      `<a href="https://assemblyline.suffolklitlab.org/docs/alkiln/intro" id="correct">Is this the real ALKiln docs link?</a>`,
+    ];
+    let index = Math.floor( Math.random() * links.length );
+    let first = links.splice( index, 1 );
+    let second = links.pop( 0 );
+    let both = `${first }\n${ second}`;
+    document.getElementById(`link-container`).innerHTML = both;
+  </script>
+</body>
+</html>
