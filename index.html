@@ -9,32 +9,129 @@
       font-size: 1.5em;
       padding: 1em;
     }
+
+    main {
+      width: 30em;
+      margin: 0 auto;
+    }
+
     div { padding-top: .5em; }
     a { display: block; }
+    img { border: 1px solid black; }
+
+    #welcome {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      text-align: center;
+      font-size: 5rem;
+      font-family: Arial, sans-serif;
+      padding-top: 0;
+    }
+
+    #welcome.opaque {
+      opacity: 1;
+    }
+
+    .rick_contents {
+      position: relative;
+    }
+
+    .rick_contents * {
+      width: 100%;
+      text-align: center;
+    }
+
+    .rick_text {
+      position: absolute;
+      top: 0;
+      /* display: flex;*/
+      /* justify-content: around;*/
+      /* flex-direction: column;*/
+      /* align-items: center;*/
+      /* line-height: 300px;*/
+      /* text-align: center;*/
+      font-family: Arial, sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .spinner {
+      width: 300px;
+      height: 300px;
+      perspective: 600px;
+      margin: 40px auto;
+      /* background-color: #000;*/
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    .spinner span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      line-height: 300px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transform-origin: center center;
+      animation: spinAndZoom 8s linear infinite;
+    }
+
+    @keyframes spinAndZoom {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        transform: scale(2) rotate(1080deg);
+      }
+    }
   </style>
 </head>
 <body>
-  <img src="rickroll_giphy_LXONhtCmN32YU.webp" alt="GIF of Rick Astley, Never Gonna Give You Up"/>
-  <div id="instructions">
-    Don't trust links either. Right click and copy the link itself, then paste it somewhere to see the url.
-  </div>
-  <div id="link-container">
-    <!-- Default if no js is available -->
-    <a href="https://assemblyline.suffolklitlab.org/docs/alkiln" id="correct">Is this the real ALKiln docs link?</a>
-    <a href="." id="wrong">Is this the real ALKiln docs link?</a>
-  </div>
+  <main>
+    <div id="welcome">Welcome!</div>
+    <div class="rick_contents">
+      <img src="rickroll_giphy_LXONhtCmN32YU.webp" alt="Rickroll GIF of Rick Astley, Never Gonna Give You Up from giphy with the id LXONhtCmN32YU."/>
+      <div class="rick_text">
+        <div><span>It looks like you just got</span></div>
+        <div class="spinner"><span>Rick rolled!</span></div>
+      </div>
+    </div>
+    <div id="instructions">
+      Links can also be tricky. Right click and copy the link itself, then paste it somewhere to see the url.
+    </div>
+    <div id="link-container">
+      <!-- Default if no js is available -->
+      <a href="https://assemblyline.suffolklitlab.org/docs/alkiln" id="correct">Is this the real ALKiln Story Table generator link?</a>
+      <a href="." id="wrong">Is this the real ALKiln Story Table generator link?</a>
+    </div>
+  </main>
   <script>
-    // Put a random link first so folks really have to check the url.
-    // This may be too annoying.
-    let links = [
-      `<a href="." id="wrong">Is this the real ALKiln docs link?</a>`,
-      `<a href="https://assemblyline.suffolklitlab.org/docs/alkiln/intro" id="correct">Is this the real ALKiln docs link?</a>`,
-    ];
-    let index = Math.floor( Math.random() * links.length );
-    let first = links.splice( index, 1 );
-    let second = links.pop( 0 );
-    let both = `${first }\n${ second}`;
-    document.getElementById(`link-container`).innerHTML = both;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setTimeout(() => {
+        document.getElementById(`welcome`).classList.add(`opaque`)
+      }, 500
+    );
+    // Remove the most annoying part
+    // // Put a random link first so folks really have to check the url.
+    // // This may be too annoying.
+    // let links = [
+    //   `<a href="." id="wrong">Is this the real ALKiln Story Table generator link?</a>`,
+    //   `<a href="https://assemblyline.suffolklitlab.org/docs/alkiln/intro" id="correct">Is this the real ALKiln Story Table generator link?</a>`,
+    // ];
+    // let index = Math.floor( Math.random() * links.length );
+    // let first = links.splice( index, 1 );
+    // let second = links.pop( 0 );
+    // let both = `${first }\n${ second}`;
+    // let all = both + `<a href="https://plocket.github.io/alkiln_story/" id="wrong">https://plocket.github.io/alkiln_story/</a>`
+    // document.getElementById(`link-container`).innerHTML = both;
   </script>
 </body>
 </html>
